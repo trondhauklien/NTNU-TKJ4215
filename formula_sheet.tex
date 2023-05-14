@@ -1,0 +1,888 @@
+\documentclass[8pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[norsk]{babel}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{multicol}
+\usepackage{titlesec}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\numberwithin{equation}{section}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{gensymb}
+
+
+\setlength{\columnsep}{0.8cm}
+
+\titleformat*{\section}{\large\bfseries}
+
+\begin{document}
+\title{Formelark - Statistisk termodynamikk}
+
+\maketitle
+
+
+\begin{multicols}{2}
+\section{Starters}
+\textbf{Stirling's approximation}\\
+For large N, Stirling's approximation becomes quite accurate. 
+\begin{equation}
+\ln{N!}\simeq N\ln{N}-N \implies N!\simeq \bigg(\frac{N}{e} \bigg)^{N}
+\end{equation}
+\textbf{Taylor series}\\
+A function f(x) near the point $x=a$ can be expressed in terms of its derivatives. 
+\begin{gather}
+f(x)\simeq f(a)+\bigg(\frac{\mathrm{d}f}{\mathrm{d}x}\bigg)_{x=a}(x-a)+\frac{1}{2}\bigg(\frac{\mathrm{d}^{2}f}{\mathrm{d}x^{2}}\bigg)_{x=a}(x-a)^2\\+...+\frac{1}{n!}\bigg(\frac{\mathrm{d}^{n}f}{\mathrm{d}x^{n}}\bigg)_{x=a}(x-a)^{n}
+\end{gather}
+Some useful results are: 
+\begin{equation}
+\ln{(a+x)}=\ln{(a)}+\frac{x}{a}-\frac{x^{2}}{2a^{2}}+\frac{x^{3}}{3a^{3}}-...+...
+\end{equation}
+\begin{equation}
+(1+x)^{p}=1+px+\frac{p(p-1)}{2!}x^{2}+\frac{p(p-1)(p-2)}{3!}x^{3}+...
+\end{equation}
+The latter equation for $|x|<1$. \\ \\ 
+\textbf{Lagrange multiplier method} \\
+Given a function $f(x,y)$ and a constraint $g(x,y)=c$. Define a new function $g'(x,y)=g(x,y)-c$. Then the extremum points can be found by maximizing/minimizing the following expression.  
+\begin{equation}
+\mathscr{L}(x,y,\lambda)=f(x,y)-\lambda g'(x,y)
+\end{equation}
+\section{Extremum principles predict equilibria}
+\textbf{Degrees of freedom}\\
+A degree of freedom is a quantity which the system is free to change. If the degree of freedom of the system is its volume, the particles will spread out into the largest possible volume to maximize the multiplicity of the system.  \\\\
+\textbf{Constraints} \\
+A constraint is a limitation imposed on the system from the outside. \\\\
+\textbf{What is a state of equilibrium?} \\
+Let $V(x)$ denote the potential energy of the system. Then a state of equilibrium at $x=x^{*}$, global or local, satisfies the following conditions. 
+\begin{equation}
+\frac{\mathrm{d}V}{\mathrm{d}x}=0, \ \ \frac{\mathrm{d}^{2}V}{\mathrm{d}x^{2}}>0 \tag{2.2}
+\end{equation}
+\section{Heat, Work \& Energy}
+The first law of thermodynamics  
+\begin{equation}
+\Delta U=q+w  \tag{-} 
+\end{equation}
+\textbf{Kinetic theory of gases}\\
+Three novel concepts: \\
+1. Matter is composed of molecules that are not located at fixed positions in space, but are free to move through a space that is otherwise empty. \\
+2. Heat is the exchange of energy that takes place owing to the motions and collisions of molecules. \\ 3. Electromagnetic radiation can influence the motions of molecules. \\\\
+Total internal energy of a thermodynamic system. $\epsilon_{i}$ is the energy of any particle at level i, and $N_{i}$ is the number of particles at energy level i. 
+\begin{equation}
+U=\sum_{i} N_{i} \epsilon_{i}
+\end{equation}
+When the total internal energy of a system is increased by heating, the energy populations do not change: the populations change. 
+
+\setcounter{section}{4}
+\section{Entropy \& the Boltzmann Law}
+\textbf{The Boltzmann law}
+\begin{equation}
+S=k_{B} \ln{W} \label{eq:5.1}
+\end{equation}
+The entropy can also be expressed in terms of probabilities. 
+\begin{equation}
+\frac{S}{k}=-\sum_{i=1}^{t} p_{i}\ln{p_{i}}
+\end{equation}
+\textbf{Maximum entropy predicts flat distributions when there are no constraints.} 
+\begin{equation}
+\sum_{i=1}^{t} p_{i}=1 \implies \sum_{i=1}^{t}dp_{i}=0 \tag{5.5}
+\end{equation}
+By the use of the Lagrange multiplier method, it can be shown that: 
+\begin{equation}
+\frac{p_{i}^{*}}{\sum_{i}p_{i}^{*}}=\frac{1}{t} \tag{5.9}
+\end{equation}
+\textbf{Maximum entropy predicts exponential distributions when there are constraints.}
+\begin{equation}
+p_{i}^{*}=\frac{e^{-\beta \epsilon_{i}}}{\sum_{i=1}^{t}e^{-\beta \epsilon_{i}}} \tag{5.17}
+\end{equation} 
+\section{Thermodynamic Driving Forces}
+The fundamental thermodynamic equations predict equilibria. 
+\begin{equation}
+\mathrm{d} S=\bigg(\frac{\partial S}{\partial U} \bigg)_{V,N} \mathrm{d} U + \bigg(\frac{\partial S}{\partial V}\bigg)_{U,N} \mathrm{d} V + \sum_{j=1}^{M}\bigg(\frac{\partial S}{\partial N_{j}}\bigg)_{U,V, N_{i\neq j}} \mathrm{d} N_{j}
+\end{equation}
+\begin{equation}
+\mathrm{d} U=\bigg(\frac{\partial U}{\partial S} \bigg)_{V,N} \mathrm{d} S + \bigg(\frac{\partial U}{\partial V}\bigg)_{S,N} \mathrm{d} V + \sum_{j=1}^{M} \bigg(\frac{\partial U}{\partial N_{j}} \bigg)_{S,V, N_{i\neq j}} \mathrm{d} N_{j}
+\end{equation}
+Each of the partial derivatives in the fundamental energy equation corresponds to a measurable physical property. 
+\begin{equation}
+T=\bigg(\frac{\partial U}{\partial S}\bigg)_{V,N}, p=-\bigg(\frac{\partial U}{\partial V}\bigg)_{S,N}, \mu_{j}=\bigg( \frac{\partial U}{\partial N_{j}} \bigg){S,V, N_{i\neq j}} \tag{6.3}
+\end{equation}
+From the entropy equation, it follows that 
+\begin{equation}
+\frac{1}{T}=\bigg(\frac{\partial S}{\partial U} \bigg)_{V,N}, \frac{p}{T}=\bigg( \frac{\partial S}{\partial V} \bigg)_{U,N}, \frac{\mu_{j}}{T}=-\bigg( \frac{\partial S}{\partial N_{j}} \bigg)_{U,V, N_{i\neq j}} \tag{6.6}
+\end{equation}
+\textbf{The second law of thermodynamics}\\
+The second law is the principle that isolated systems tend toward their states of maximum entropy. $\frac{1}{T}$ is a measure of a system's tendency for heat exchange, $\frac{p}{T}$ is a measure of a system's tendency for volume change, and $\frac{\mu}{T}$ is a measure of a system's tendency for particle exchange. 
+\section{The Logic of Thermodynamics}
+The first law interrelates heat, work, and energy. The use of $\delta$ indicates that heat and work are path-dependent. $\delta q > 0$ implies a heat flow into the system. $\delta w > 0$ implies work beeing done on the system. 
+\begin{equation}
+\mathrm{d}U=\delta q+\delta w \tag{7.1}
+\end{equation}
+Processes are quasi-static if they are performed slowly enough that their properties are independent of time and the speed of the process. \\\\
+\textbf{Work describes mechanical energy transfer} 
+\begin{equation}
+\delta w = -p_{ext}\mathrm{d}V \tag{7.2}
+\end{equation}
+\textbf{Heat describes thermal energy transfer} \\ At constant volume, the heat capacity is: 
+\begin{equation}
+C_V=\bigg( \frac{\delta q}{\mathrm{d} T} \bigg)_{V}=\bigg(\frac{\partial U}{\partial T} \bigg)_{V} \tag{7.3}
+\end{equation}
+In general, to find the energy change $\Delta$U of an object as you raise its temperature from $T_{a}$ to $T_{b}$, you need to know the functional dependence of $C_{V}$ on T. 
+\begin{equation}
+\Delta U = \int_{T_{a}}^{T_{b}} C_{V}(T) dT \tag{7.4}
+\end{equation}
+\textbf{Reversible processes} \\
+In a reversible process, the heat exchange is defined as $q=q_{rev}$ and the entropy change is given by: 
+\begin{equation}
+\mathrm{d}S=\frac{\delta q_{rev}}{T} \tag{7.8}
+\end{equation}
+\textbf{Four different processes can change an ideal gas} \\
+1. Constant-volume process 
+\begin{equation}
+q=\Delta U=C_{V}(T_{2}-T_{1})=\frac{C_{V}}{Nk}V_{0}(p_{2}-p_{1}) \tag{7.11}
+\end{equation}
+2. Constant-pressure process 
+\begin{equation}
+w=-\int_{V_{1}}^{V_{2}} p_{0}\mathrm{d}V=-p_{0}(V_{2}-V_{1}) \tag{7.12}
+\end{equation}
+3. Constant-temperature process 
+\begin{equation}
+w=-\int_{V_{1}}^{V_{2}} p_{ext}\mathrm{d}V=-NkT_{0}\ln{\frac{p_{1}}{p_{2}}} \tag{7.15}
+\end{equation}
+4. Adiabatic process 
+\begin{equation}
+\frac{T_{2}}{T_{1}}=(\frac{V_{1}}{V_{2}})^{\frac{Nk}{C_{V}}} \tag{7.21}
+\end{equation}
+\section{Laboratory Conditions \& Free Energies}
+Systems held at constant temperature do not tend toward their states of maximum entropy. They tend toward their states of \textit{minimum free energy}. \\ \\
+\textbf{The Helmholtz free energy (T,V,N)} 
+\begin{equation}
+F=U-TS \tag{8.5}
+\end{equation}
+Inserting the fundamental energy equation into this, we get the fundamental equation for the Helmholtz free energy. 
+\begin{equation}
+\mathrm{d}F=\mathrm{d}(U-TS)=-S\mathrm{d}T-p\mathrm{d}V+\sum_{j=1}^{M}\mu_{j}\mathrm{d}N_{j} \tag{8.10}
+\end{equation}
+We now get additional thermodynamic relations. 
+\begin{equation}
+S=-\bigg( \frac{\partial F}{\partial T}\bigg)_{V,N}, p=-\bigg( \frac{\partial F}{\partial V} \bigg)_{T,N}, \mu_{j}=\bigg( \frac{\partial F}{\partial N_{j}} \bigg)_{V,T, N_{i\neq j}} \tag{8.12}
+\end{equation}
+\textbf{The Enthalpy (S,p,N)}
+\begin{equation}
+H=U+pV \implies \mathrm{d}H=\mathrm{d}U+p\mathrm{d}V+V\mathrm{d}p \tag{8.13}
+\end{equation}
+\begin{equation}
+\mathrm{d}H=\mathrm{d}(U+pV)=T\mathrm{d}S+V\mathrm{d}p+\sum_{j=1}^{M}\mu_{j}\mathrm{d}N{j} \tag{8.15}
+\end{equation}
+\textbf{The Gibbs free energy (T,p,N)} 
+\begin{equation}
+G=H-TS \implies \mathrm{d} G=\mathrm{d}H-T\mathrm{d}S-S\mathrm{d}T \tag{8.16}
+\end{equation}
+\begin{equation}
+\mathrm{d}G=\mathrm{d}(H-TS)=-S\mathrm{d}T+V\mathrm{d}p+\sum_{j=1}^{M}\mu_{j}\mathrm{d}N_{j} \tag{8.18}
+\end{equation}
+We now get additional thermodynamic relations. 
+\begin{equation}
+S=-\bigg( \frac{\partial G}{\partial T} \bigg)_{p,N}, V=\bigg( \frac{\partial G}{\partial p} \bigg)_{T,N}, \mu_{j}=\bigg( \frac{\partial G}{\partial N_{j}} \bigg)_{p,T, N_{i\neq j}} \tag{8.20}
+\end{equation}
+\section{Maxwell's Relations \& Mixtures}
+\textbf{How to design a fundamental equation} \\
+1. Introduce the extensive variabel X into the fundamental energy equation. U=U(S,V,N,X). It is always extensive variables that you add, and you add them only to the fundamental energy equation. 
+\begin{equation}
+\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V+\sum_{k} \mu_{k}\mathrm{d}N_{k}+f\mathrm{d}L+\gamma\mathrm{d}A+\psi\mathrm{d}Q+... \tag{9.1}
+\end{equation}
+The generalized force $\mathscr{F}$ for each new term is 
+\begin{equation}
+\mathscr{F}_{j}=\bigg( \frac{\partial U}{\partial X_{j}} \bigg)_{S,V,N,X_{i\neq j}} \tag{9.2}
+\end{equation} 
+With this augmented function $\mathrm{d}U$, you can find the fundamental function for the appropriate independent variables. \\\\
+\textbf{A recipe for finding Maxwell's relations} \\
+1. Identify what independent variables are implied by the problem. \\
+2. Find the natural function of these variables. See table (8.1) \\
+3. Express the total differential of the natural function. \\
+4. Based on Euler's reciprocal relation, set equal the two cross-derivatives you want. \\ \\
+\textbf{Partial molar properties} \\
+Partial molar quantities are defined specifically to be quantities measured at constant T and P, usually implying the isobaric-isothermic ensemble (Gibbs). The partial molar volume is given by 
+\begin{equation}
+v_{j}=\bigg( \frac{\partial V}{\partial n_{j}} \bigg)_{T,p,N_{i\neq j}} \tag{9.29}
+\end{equation}
+Chemical potentials are partial molar free energies.
+\begin{gather}
+\mu_{j}=\bigg( \frac{\partial G}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}}=\bigg( \frac{\partial H}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}} - T\bigg( \frac{\partial S}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}} \tag{-}\\ = h_{j}-Ts_{j}  \tag{9.32}
+\end{gather}
+$h_{j}$ and $s_{j}$ are partial molar enthalpy and entropy. 
+\section{The Boltzmann Distribution Law}
+The Boltzmann distribution law is given by 
+\begin{equation}
+p_{j}^{*}=\frac{e^{-E_{j}/kT}}{Q}, Q=\sum_{j=1}^{t}e^{-E_{j}/kT} \tag{10.9}
+\end{equation}
+The relative populations of particles in energy levels $i$ and $j$ are given by
+\begin{equation}
+\frac{p_{i}^{*}}{p_{j}^{*}}=e^{-(E_{i}-E_{j})/kT} \tag{10.10}
+\end{equation}
+\textbf{What does a partition function tell you?} \\
+It is a sum of Boltzmann factors that specify how particles are partitioned throughout the accessible states.  \\ \\
+\textbf{Density of states} \\
+We now define W(E) to be the density of states; that is, W(E) is the total number of ways a system can occur in energy level E. The partition function can now be written as a sum over all accessible energy levels.
+\begin{equation}
+Q=\sum_{\mathscr{L}=1}^{\mathscr{L}_{max}}W(E_{\mathscr{L}})e^{-E_{j}/kT} \tag{10.23}
+\end{equation}
+\textbf{Partition function for independent and distinguishable particles} \\
+For a system having N independent and distinguishable particles, we have: 
+\begin{equation}
+Q=q^{N} \tag{10.28}
+\end{equation}
+For a system with N indistinguishable particles, we have: 
+\begin{equation}
+Q=\frac{q^{N}}{N!} \tag{10.30}
+\end{equation}
+\textbf{Thermodynamic quantities can be predicted from partition functions} \\
+\textit{Internal energy} 
+\begin{equation}
+U=-\frac{1}{Q}\bigg(\frac{\mathrm{d}Q}{\mathrm{d}\beta}\bigg)=-\bigg(\frac{\mathrm{d}ln{Q}}{\mathrm{d}\beta}\bigg)=kT^{2}\bigg(\frac{\mathrm{d}\ln{Q}}{\mathrm{d}T}\bigg) \tag{10.33}
+\end{equation}
+\textit{Average particle energy} \\
+If particles are independent and distinguishable, we have: 
+\begin{equation}
+\langle \epsilon \rangle = \frac{U}{N}=\frac{kT^{2}}{N}\bigg(\frac{\partial \ln{q^{N}}}{\partial T}\bigg)_{V,N}=kT^{2}\bigg(\frac{\partial\ln{q}}{\partial T}\bigg)=-\bigg(\frac{\partial\ln{q}}{\partial \beta}\bigg) \tag{10.36}
+\end{equation}
+\textit{Entropy}
+\begin{equation}
+S=k\ln{Q}+\frac{U}{T}=k\ln{Q}+kT\bigg(\frac{\partial\ln{Q}}{\partial T}\bigg) \tag{10.38}
+\end{equation}
+For systems of N independent distinguishable particles, we have: 
+\begin{equation}
+S=kN\ln{q}+\frac{U}{T} \tag{10.39}
+\end{equation}
+\textit{Helmholtz free energy}
+\begin{equation}
+F=U-TS=-kT\ln{Q} \tag{10.42}
+\end{equation}
+\textit{Chemical potential}
+\begin{equation}
+\mu=\bigg(\frac{\partial F}{\partial N}\bigg)_{T,V}=-kT\bigg(\frac{\partial\ln{Q}}{\partial N}\bigg)_{T,V} \tag{10.43}
+\end{equation}
+\textbf{What is an ensemble?} \\
+An ensemble is usually used in one of two ways.\\ 
+1. It can refer to which set of variables you are controlling.  \\
+2. The term can also mean the collection of all possible microstates of a system. 
+\section{The Statistical Mechanics of Simple Gases \& Solids}
+\textbf{Translational contribution to the partition function} \\ 
+The translational partition function is the number of translational energy levels effectively accessible to an atom at the given temperature. 
+For a one-dimensional box model:
+\begin{equation}
+q_{translation}=\bigg(\frac{2\pi mkT}{h^{2}}\bigg)^{\frac{1}{2}}L \tag{11.15}
+\end{equation}
+For a three-dimensional box model:
+\begin{equation}
+q_{translation}=\bigg(\frac{2\pi mkT}{h^{2}}\bigg)^{\frac{3}{2}}V \tag{11.18}
+\end{equation}
+The energy levels $\epsilon_{n}$ are written as 
+\begin{equation}
+\epsilon_{n}=\frac{(nh)^{2}}{8mL^{2}} \tag{11.12}
+\end{equation}
+\textbf{Vibrational contribution to the partition function} \\ 
+The vibrational partition function can be wrtiten as
+\begin{equation}
+q_{vibration}=\frac{1}{1-e^{-h\nu/kT}} \tag{11.26}
+\end{equation}
+or 
+\begin{equation}
+q_{vibration}=\frac{e^{\frac{-\beta h\nu}{2}}}{1-e^{-\beta h\nu}}, \ \ \beta = \frac{1}{kT} \tag{11.26}
+\end{equation}
+where we in the last equation include the vibrational ground state. \\ \\
+Vibrational temperature defined as: 
+\begin{equation}
+\theta_{vibration}=\frac{h\nu}{k} \tag{-}
+\end{equation}
+Vibrational energy levels are given by: 
+\begin{equation}
+\epsilon_{v}=\bigg(+\frac{1}{2}\bigg)h\nu \tag{11.22}
+\end{equation}
+To apply the harmonic oscillator model to diatomic molecules, we need to generalize from a single particle. The vibrational energy levels are identical as in (11.22). Now the vibrational frequency is: 
+\begin{equation}
+\nu=\bigg(\frac{1}{2\pi} \bigg)\bigg(\frac{k_{s}}{\mu}\bigg)^{1/2} \tag{11.23}
+\end{equation}
+where $\mu$ is the reduced mass $\mu=\frac{m_{1}m_{2}}{m_{1}+m_{2}}$ \\ \\
+\textbf{Rotational contribution to the partition function}
+Linear rotation gives: 
+\begin{equation}
+q_{rotation}=\frac{T}{\sigma\theta_{rotation}}=\frac{8\pi^{2}IkT}{\sigma h^{2}} \tag{11.30}
+\end{equation}
+Non-linear rotation gives: 
+\begin{equation}
+q_{non-lin.rot}=\frac{(\pi I_{a}I_{b}I_{c})^{\frac{1}{2}}}{\sigma}\bigg(\frac{8\pi^{2}kT}{h^{2}}\bigg)^{\frac{3}{2}} \tag{11.31}
+\end{equation}
+Rotational temperature defined as: 
+\begin{equation}
+\theta_{rotation}=\frac{h^{2}}{8\pi^{2}Ik} \tag{-}
+\end{equation}
+The energy levels are given by
+\begin{equation}
+\epsilon_{l}=\frac{l(l+1)h^{2}}{8\pi^{2}I} \tag{11.28}
+\end{equation}
+\textbf{The electrical contribution}
+\begin{equation}
+q_{electronic}=g_{0}+g_{1}e^{-\Delta\epsilon_{1}/kT}+g_{2}e^{-\Delta\epsilon_{2}/kT}+... \tag{11.33}
+\end{equation}
+\textbf{The total partition function}
+\begin{equation}
+q=q_{translation}q_{rotation}q_{vibration}q_{electronic} \tag{11.35}
+\end{equation}
+From the partition function, ideal gas properties follow. \\\\
+\textbf{Ideal gas free energy}
+\begin{equation}
+F=-NkT\ln{\bigg(\frac{eq}{N}\bigg)} \tag{11.36}
+\end{equation}
+\textbf{Ideal gas pressure}
+\begin{equation}
+p=-\bigg(\frac{\partial F}{\partial V}\bigg)_{T,N}=\frac{NkT}{V} \tag{-}
+\end{equation}
+\textbf{Ideal gas energy}
+\begin{equation}
+U=NkT^{2}\bigg(\frac{\partial\ln{q}}{\partial T}\bigg) \tag{-}
+\end{equation}
+\textbf{Ideal gas entropy}
+\begin{equation}
+S=Nk\ln{\bigg[\bigg(\frac{2\pi mkT}{h^{2}} \bigg)^{\frac{3}{2}}\bigg(\frac{e^{\frac{5}{2}}}{N}   \bigg)V\bigg]} \tag{11.42}
+\end{equation}
+\textbf{Ideal gas chemical potential}
+\begin{equation}
+\mu=kT\ln{\frac{N}{eq}}+kT=-kT\ln{\frac{q}{N}} \tag{11.47}
+\end{equation}
+We aim to factor the partition function, based on the derivative we will need to take, into a pressure-dependent term and a term for the pressure independent quantities, $q=q_{0}V$
+\begin{equation}
+\frac{q}{N}=\frac{q_{0}V}{N}=\frac{q_{0}kT}{p} \tag{11.48}
+\end{equation}
+The quantity $q_{0}kT$ has units of pressure: 
+\begin{equation}
+p_{int}^{\degree}=q_{0}kT=kT\bigg(\frac{2\pi mkT}{h^{2}}\bigg)^{\frac{3}{2}}q_{rot}q_{vib}q_{elec} \tag{11.49}
+\end{equation}
+Substituting (11.48) and (11.49) into (11.47) gives: 
+\begin{equation}
+\mu=\mu^{\degree}+kT\ln{p}=kT\ln{\bigg(\frac{p}{p_{int}^{\degree}}\bigg)} \tag{11.50}
+\end{equation}
+where $\mu^{\degree}=-kT\ln{p_{int}^{\degree}}$
+\setcounter{section}{12}
+\section{Chemical Equilibria}
+\textbf{Partition functions for chemical equilibria} \\
+We define a partition function with the ground state explicitly included. 
+\begin{equation}
+q'=\sum_{j=0}^{t}e^{-\epsilon_{j}/kT}=e^{-\epsilon_{0}/kT}+e^{-\epsilon_{1}/kT}+...\tag{13.6} 
+\end{equation}
+\begin{equation}
+q=e^{\epsilon_{0}/kT}q'=1+e^{-(\epsilon_{1}-\epsilon_{0})/kT}+e^{-(\epsilon_{2}-\epsilon_{0})/kT}+... \tag{13.7}
+\end{equation}
+In terms of $q'$, the chemical potential for a species is defined as $\mu_{A}=-kT\ln{\bigg(\frac{q'_{A}}{N_{A}}\bigg)}$. \\
+We define the equilibrium constant K as: 
+\begin{equation}
+K=\frac{N_{B}}{N_{A}}=\bigg(\frac{q'_{B}}{q'_{A}}\bigg)=\bigg(\frac{q_{B}}{q_{A}}\bigg)e^{-(\epsilon_{0B}-\epsilon_{0A})/kT} \tag{13.10}
+\end{equation}
+\textbf{More complex equilibria}
+\begin{equation}
+aA+bB\rightarrow cC \tag{13.11}
+\end{equation}
+We introduce a progress variable $\zeta$ such that: 
+\begin{equation}
+\mathrm{d}N_{C}=c\mathrm{d}\zeta, \mathrm{d}N_{A}=-a\mathrm{d}\zeta, \mathrm{d}N_{B}=-b\mathrm{d}\zeta \tag{13.13}
+\end{equation} 
+\begin{equation}
+K=\bigg(\frac{q_{C}^{c}}{q_{A}^{a}q_{B}^{b}}\bigg)e^{-(c\epsilon_{0C}-a\epsilon_{0A}-b\epsilon_{0B})/kT} \tag{13.17}
+\end{equation}
+\textbf{Pressure-based equilibrium constants}\\
+Because pressures are easier to measure! 
+\begin{equation}
+K=\frac{p_{C}^{c}}{p{B}^{b}p_{C}^{c}}=(kT)^{c-a-b}\frac{(q_{0C})^{c}}{q_{0B})^{b}q_{0A})^{a}}e^{\Delta D/kT} \tag{13.18}
+\end{equation}
+\begin{equation}
+\mu=-kT\bigg(\ln{\frac{q'_{0}kT}{p}}\bigg)=kT\bigg(\ln{\frac{p}{p_{int}^{0}}}\bigg)=\mu^{0}+kT\ln{p} \tag{13.29}
+\end{equation}
+\textbf{Van't Hoff equation}
+\begin{equation}
+\bigg(\frac{\partial \ln{K_{p}}}{\partial T}\bigg)=\frac{\Delta h^{\degree}}{kT^{2}} \tag{13.36}
+\end{equation}
+\begin{equation}
+\ln{\bigg[\frac{K_{p}(T_{2})}{K_{p}(T_{q})} \bigg]}=\frac{-\Delta h^{\degree}}{k}\bigg(\frac{1}{T_{2}}-\frac{1}{T_{1}}\bigg) \tag{13.37}
+\end{equation}
+\textbf{Gibbs-Helmholtz equation for temperature dependent equilibria} \\
+How does the free energy G(T) of any system depend on temperature? \\\begin{equation}
+\bigg(\frac{\partial(G/T)}{\partial T} \bigg)_{p}=-\frac{H(T)}{T^{2}} \tag{13.41}
+\end{equation}
+For Helmholtz free energy: 
+\begin{equation}
+\bigg(\frac{\partial(F/T)}{\partial T} \bigg)_{V}=-\frac{U(T)}{T^{2}} \tag{13.42}
+\end{equation}
+\textbf{Pressure dependence of K} \\
+Applying pressure can shift an equilibrium. The pressure dependence K(p) indicates a difference in volume on the two sides of the equilibrium. 
+\begin{equation}
+\bigg(\frac{\partial\ln{K}}{\partial p}\bigg)_{T}=-\frac{\Delta v^{\degree}}{kT} \tag{13.46}
+\end{equation}
+$v^{\degree}$ refers to the volume of the component at 1 bar of pressure. 
+\section{Equilibria Between Liquids, Solids, \& Gases}
+If the vapor is dilute enough to be an ideal gas, then we have: 
+\begin{equation}
+\mu_{v}=kT\ln{\bigg(\frac{p}{p_{int}^{\degree}} \bigg)} \tag{14.5}
+\end{equation}
+where $p$ is the vapor pressure. \\\\
+\textbf{Total bond energy}
+\begin{equation}
+U=mw_{AA}=\bigg(\frac{Nzw_{AA}}{2}\bigg) \tag{14.6}
+\end{equation}
+\textbf{Free energy and chemical potential} \\
+The free energy of the lattice model liquid with zero entropy:
+\begin{equation}
+F=U-TS=U=N\bigg(\frac{zw_{AA}}{2}\bigg) \tag{14.7}
+\end{equation}
+\begin{equation}
+\mu_{c}=\bigg(\frac{\partial F}{\partial N}\bigg)_{T,V}=\frac{zw_{AA}}{2} \tag{14.8}
+\end{equation}
+\textbf{The vapor pressure}\\
+For a condensed phase, we use (14.5),(14.8) and set the chemical potential of the vapor equal that of the condensed phase. 
+\begin{equation}
+kT\ln{\bigg(\frac{p}{p_{int}^{\degree}} \bigg)}=\frac{zw_{AA}}{2} \implies p=p_{int}^{\degree}e^{zw_{AA}/2kT} \tag{14.9}
+\end{equation}
+\textbf{Clapeyron equation describes p(T) at phase equilibrium}\\
+The Clapeyron equation is given by: 
+\begin{equation}
+\frac{\mathrm{d}p}{\mathrm{d}T}=\frac{\Delta h}{T\Delta v} \tag{14.19}
+\end{equation}
+The Clausius-Clapeyron equation is given by: 
+\begin{equation}
+\frac{\mathrm{d}\ln{p}}{\mathrm{d}T}=\frac{\Delta h}{RT^{2}} \tag{14.20}
+\end{equation}
+The vaporization enthalpy is related to the lattice model pair interaction energy through:
+\begin{equation}
+\Delta h_{vap}=-\frac{zw_{AA}}{2} \tag{14.22}
+\end{equation}
+\textbf{Cavities in liquids and solids}\\
+The energy cost of removing one particle, leaving behind an open cavity, is: 
+\begin{equation}
+\Delta U_{remove}=-zw_{AA} \tag{14.23}
+\end{equation}
+The removal of one particle and the subsequent closure of the cavity is given by: 
+\begin{equation}
+\Delta U_{remove+close}=U(N-1)-U(N)=-\frac{-zw_{AA}}{2} \tag{14.24}
+\end{equation}
+Further, we have 
+\begin{equation}
+\Delta U_{close}=\frac{zw_{AA}}{2}, \ \ \ \Delta U_{open}=-\frac{zw_{AA}}{2} \tag{14.25}
+\end{equation}
+\textbf{Surface tension describes equilibrium between molecules in the bulk and at the surface.} \\
+Total energy of a condensed phase with N molecules and n molecules on the surface: 
+\begin{equation}
+U=\bigg(\frac{zw_{AA}}{2}\bigg)(N-n)+\bigg(\frac{(z-1)w_{AA}}{2}\bigg)n=\frac{w_{AA}}{2}(Nz-n) \tag{14.26}
+\end{equation}
+The surface tension is defined as: 
+\begin{equation}
+\gamma=\bigg(\frac{\partial F}{\partial A}\bigg)_{T,V,N}=\bigg(\frac{\partial F}{\partial n}\bigg)_{T,V,N}\bigg(\frac{\mathrm{d}n}{\mathrm{d}A}\bigg)=\bigg(\frac{\partial U}{\partial n}\bigg)_{T,V,N}\bigg(\frac{\mathrm{d} n}{\mathrm{d}A}\bigg) \tag{14.27}
+\end{equation} \\
+The lattice model gives: 
+\begin{equation}
+\gamma=\frac{-w_{AA}}{2a} \tag{14.29}
+\end{equation}
+\section{Solutions \& Mixtures}
+\textbf{The entropy of solution}
+\begin{equation} 
+\Delta S_{solution}=-k(N_{A}\ln{x_{A}}+N_{B}\ln{x_{B}}) \tag{15.3}
+\end{equation}
+This entropy can be expressed in terms of the relative concentrations of A and B. $x=\frac{N_{A}}{N}, (1-x)=\frac{N_{B}}{N}$ gives:
+\begin{equation}
+\frac{\Delta S_{solution}}{Nk}=-x\ln{x}-(1-x)\ln{(1-x)} \tag{15.4}
+\end{equation}
+\textbf{Ideal solutions} \\
+A solution is ideal if its free energy of solution is given by: 
+\begin{equation}
+\Delta F_{solution}=-T\Delta S_{solution} \tag{-}
+\end{equation}
+\textbf{The energy of solution}\\
+The total interaction energy of the system is: 
+\begin{gather}
+U=\bigg(\frac{zN_{A}-m_{AB}}{2}\bigg)w_{AA}+\bigg(\frac{zN_{B}-m_{AB}}{2}\bigg)w_{BB} +m_{AB}w_{AB}  \tag{15.9} \\ =\bigg(\frac{zw_{AA}}{2}\bigg)N_{A}+\bigg(\frac{zw_{BB}}{2}\bigg)N_{B}+\bigg(w_{AB}-\frac{w_{AA}+w_{BB}}{2}\bigg)m_{AB} \tag{-}
+\end{gather}
+\textbf{Brag-Williams approximation}\\ 
+\begin{equation}
+m_{AB}\simeq \frac{zN_{A}N_{B}}{N}=zNx(1-x) \tag{15.11}
+\end{equation}
+The exchange parameter is given by: 
+\begin{equation}
+\chi_{AB}=\frac{z}{kT}\bigg(w_{AB}-\frac{w_{AA}+w_{BB}}{2}\bigg) \tag{15.13}
+\end{equation}
+\textbf{The free energy of solution} \\
+\begin{gather}
+\frac{F(N_{A},N_{B})}{kT}=N_{A}\ln{\bigg(\frac{N_{A}}{N} \bigg)}+ N_{B}\ln{\bigg(\frac{N_{B}}{N} \bigg)} +\bigg(\frac{zw_{AA}}{2kT}\bigg)N_{A} \\+\bigg(\frac{zw_{BB}}{2kT}\bigg)N_{B} +\chi_{AB}\frac{N_{A}N_{B}}{N} \tag{15.14}
+\end{gather}
+The free energy of solution in terms of mole fractions is given by: 
+\begin{equation}
+\frac{\Delta F_{solution}}{NkT}=x\ln{x}+(1-x)\ln{(1-x)}+\chi_{AB}x(1-x) \tag{15.16}
+\end{equation}
+\textbf{The chemical potentials}\\
+The chemical potential for A in the lattice model of a two-component mixture is found by $\mu_{A}=(\partial F/\partial N_{A})_{T,N_{B}}$
+\begin{equation}
+\frac{\mu_{A}}{kT}=\ln{x_{A}}+\frac{zw_{AA}}{2kT}+\chi_{AB}(1-x_{A})^{2} \tag{15.17}
+\end{equation} 
+\section{Solvation \& the Transfer of Molecules Between Phases}
+\textbf{Vapor pressure of B over a solution with concentration $x_{B}$}
+\begin{equation}
+p_{B}=p_{B}^{o}x_{B}exp\bigg[\chi_{AB}(1-x_{B})^{2} \bigg]
+\end{equation}
+where $p_{B}^{o}$ is the vapor pressure of B over a pure solvent B. 
+\begin{equation}
+p_{B}^{\degree}=p_{B,int}^{\degree}\exp\bigg(\frac{zw_{BB}}{2kT}\bigg) \tag{16.4}
+\end{equation}
+\textbf{Activity and acitivity coefficient}
+We have: 
+\begin{gather}
+\mu_{b}(gas)=\mu_{B}^{\degree}(gas)+kT\ln{p_{B}} \tag{16.10} \\
+\mu_{b}(liquid)=\mu_{B}^{\degree}(liquid)+kT\ln{\gamma_{B}(x_{B}x_{B})} \tag{16.11}
+\end{gather}
+Setting these equal yields a general expression for the equilibrium vapor pressure. 
+\begin{equation}
+\frac{p_{B}}{x_{B}}=\gamma_{B}(x_{B}\exp\bigg(\frac{\Delta \mu_{B}^{\degree}}{kT} \bigg) \tag{16.12}
+\end{equation}
+The strategy is to measure $p_{B}/x_{B}$ and then to curve-fit (16.12) using som function $\gamma_{B}x_{B}$ and a constant $\Delta \mu_{B}^{\degree}$.\\
+\textbf{Solvent convention} \\
+If your exchangeable component is the solvent, then, by convention, you choose a function that satisfies the limit $\gamma_{B}(x_{B})\rightarrow 1$ as $x_{B}\rightarrow 1$. \\
+\textbf{Solute convention} \\
+If your exchangeable component is a solute, then you choose a function such that $\gamma_{B}(x_{B})\rightarrow 1$ as $x_{B}\rightarrow 0$. \\ \\
+\textbf{Osmotic pressure} \\ 
+At equilibrium, we must have: 
+\begin{equation}
+\mu_{B}(pure,p)=\mu_{B}(mixture, p+\pi, x_{B}) \tag{16.30}
+\end{equation}
+Osmotic pressure in terms of the composition of a dilute solution($\gamma_{B}\simeq1$), we get:
+\begin{equation}
+\pi=\frac{RTx_{A}}{v_{B}} \tag{16.36}
+\end{equation}
+\section{Physical Kinetics: Diffusion, Permeation, \& Flow}
+\textbf{Defining the flux}
+I the flow velocity is $v=\Delta x/\Delta t$, the flux is:
+\begin{equation}
+J=\frac{c\Delta x}{\Delta t}=cv \tag{17.1}
+\end{equation}
+The velocity $v$ times a proportionality constant called the friction coefficient $\zeta$ equals the applied force $f=\zeta v$. \\\\
+Subsituting this into (17.1) gives: 
+\begin{equation}
+J=cv=\frac{cf}{\zeta} \tag{17.4}
+\end{equation}
+\textbf{Fick's first law}
+The flux $J$ of particles is proportional to the gradient of concentration. 
+\begin{equation}
+J=-D\frac{\mathrm{d}c}{\mathrm{d}x} \tag{17.5}
+\end{equation}
+In 3D, we have: 
+\begin{equation}
+J=-D\nabla c \tag{17.6}
+\end{equation}
+\textbf{Fourier's law}
+This law describes how heat $J_{q}$ is driven by temperature gradients. 
+\begin{equation}
+J_{q}=-\kappa \frac{\mathrm{d}T}{\mathrm{d}x} \tag{17.7}
+\end{equation}
+\textbf{Fick's second law: The diffusion equation}
+\begin{equation}
+\bigg( \frac{\partial c}{\partial t}\bigg)=\bigg( \frac{\partial}{\partial x}\bigg[D\bigg(\frac{\partial c}{\partial x}\bigg)\bigg]\bigg)=D\bigg(\frac{\partial^{2}c}{\partial x^{2}}\bigg) \tag{17.12}
+\end{equation}
+\textbf{Smoluchowski equation}
+The Smoluchowski equation describes particles driven by both applied forces and diffusion. 
+\begin{equation}
+\bigg(\frac{\partial c}{\partial t}\bigg)=D\bigg(\frac{\partial^{2}c}{\partial x^{2}}\bigg)-\frac{f}{\zeta}\bigg(\frac{\partial c}{\partial x}\bigg) \tag{17.36}
+\end{equation}
+\textbf{Einstein-Smoluchowski equation}
+This equation relates diffusion and friction. $\zeta$ is the friction coefficient, $D$ is the diffusion coefficient-
+\begin{equation}
+D=\frac{kT}{\zeta} \tag{17.42}
+\end{equation}
+\textbf{Onsager reciprocal relations}
+\begin{equation}
+J_{1}=L_{11}f_{1}+L_{12}f_{2} \ \ \ J_{2}=L_{21}f_{1}+L_{22}f_{2} \tag{17.72}
+\end{equation}
+
+\setcounter{section}{18}
+\section{Chemical Kinetics \& Transition States}
+\textbf{Principle of detailed balance} \\
+The principle says that the forward and reverse rates must be identical for an elementary reaction at equilibrium. 
+\begin{equation}
+k_{f}[A]_{eq}=k_{r}[B]_{eq} \tag{19.4}
+\end{equation}
+\textbf{Transition state theory} \\
+The first stage is an equilibrium between the reactants and the transition state. The second is a direct step downhill from the transition state to form the product. 
+\begin{equation}
+A+B\xrightarrow{K^{\ddagger}}(AB)^{\ddagger}\xrightarrow{k^{\ddagger}}P \tag{19.13}
+\end{equation}
+A key assumption of transition state theory is that the first stage can be expressed as an equilibrium. 
+\begin{equation}
+K^{\ddagger}=\frac{[(AB)^{\ddagger}]}{[A][B]} \tag{19.14}
+\end{equation}
+Even though the transition state is not a true equilibrium state. 	\\ \\
+The measurable rate coefficient is given as 
+\begin{equation}
+k_{2}=k^{\ddagger}K^{\ddagger} \tag{19.16}
+\end{equation}
+We can express $K^{\ddagger}$ in terms of molecular partition functions.
+\begin{equation}
+K^{\ddagger}=\bigg(\frac{q_{(AB)^{\ddagger}}}{q_{A}q_{B}}\bigg) \tag{19.17}
+\end{equation} 
+\textbf{The thermodynamics of the activated state}\\
+We are treating $\overline{K^{\ddagger}}$ as an equilibrium constant for the stable degrees of freedom. The overbar indicates that the unstable reaction coordinate degree of freedom $\zeta$ has been factored out. We can express this constant in terms of thermodynamic quantities which are called the activation free energy $\Delta G^{\ddagger}$, activation enthalpy $\Delta H^{\ddagger}$ and activation entropy $\Delta S^{\ddagger}$. 
+\begin{equation}
+-kT\ln{\overline{K^{\ddagger}}}=\Delta G^{\ddagger}=\Delta H^{\ddagger}-T\Delta S^{\ddagger} \tag{19.25}
+\end{equation}
+\begin{equation}
+k_{2}=\bigg(\frac{kT}{h}\bigg)e^{-\Delta G^{\ddagger}/kT}=\bigg(\frac{kT}{h} \bigg)e^{-\Delta H^{\ddagger}/kT}e^{\Delta S^{\ddagger}/k} \tag{19.26}
+\end{equation}
+\section{Coulomb's Law of Electrostatic Forces}
+\textbf{Interaction energy}\\
+The interaction energy between two charges in a vacuum is: 
+\begin{equation}
+u(r)=\frac{\mathscr{C}q_{1}q_{2}}{r}
+\end{equation}
+\textbf{The Bjerrum length}\\
+The Bjerrum length, $\mathscr{L}_{B}$, is defined as the charge separation at which the Coulomb energy $u(r)$ between a mole of ion pairs just equals the thermal energy $RT$. 
+\begin{equation}
+\mathscr{L}_{B}=\frac{\mathscr{C}e^{2}\mathscr{N}}{DRT} \tag{20.8}
+\end{equation}
+\textbf{Electrostatic field}\\
+The electrostatic field is defined as 
+\begin{equation}
+E(\textbf{r})=\frac{f(\textbf{r})}{q_{test}}=\frac{q_{fixed}}{4\pi \epsilon_{0}Dr^{2}}\frac{\textbf{r}}{r} \tag{20.13}
+\end{equation}
+\section{The electrostatic potential}
+The work $\mathrm{d}w$ that you must perform to move a charge $q$ through a small distance $\mathrm{d}l$ in the presence of an electrostatic field E is: 
+\begin{equation}
+\delta w=-\textbf{f}\cdot \mathrm{d}\textbf{l}=-q\textbf{E}\cdot \mathrm{d}\textbf{l} \tag{21.1}
+\end{equation}
+We define the difference in the electrostatic potentials $\psi{A}$ and $\psi_{B}$ as the work $w_{AB}$ of moving a unit test charge from point A to point B. 
+\begin{equation}
+\psi_{B}-\psi_{A}=\frac{w_{AB}}{q_{test}}=-\int_{A}^{B}\textbf{E}\cdot\mathrm{d}\textbf{l} \tag{21.3}
+\end{equation}
+\textbf{The potential around a point charge}\\
+The change in electrostatic potential $\Delta\psi$ upon moving a test charge radially inward toward the fixed charge from $r'=\infty$ to $r'=r$ is: 
+\begin{equation}
+\psi (r)=-\int_{\infty}^{r}E\mathrm{d}r'=\frac{q_{fixed}}{4\pi \epsilon_{0}Dr} \tag{21.9}
+\end{equation}
+\textbf{Poisson's equation}
+\begin{equation}
+\nabla^{2}\psi=-\frac{\rho}{\epsilon_{0}D} \tag{21.36}
+\end{equation}
+\section{Electrochemical Equilibria}
+The fundamental energy equation augmented to include charge effects is: 
+\begin{equation}
+\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V+\sum_{j=1}^{t}\mu_{j}\mathrm{d}N_{j}+\sum_{i=1}^{M}\psi_{i}\mathrm{d}q_{i} \tag{22.1}
+\end{equation}
+The differential for the Gibbs free energy is then: 
+\begin{equation}
+\mathrm{d}G=-S\mathrm{d}T+V\mathrm{d}p+\sum_{j=1}^{t}\mu_{j}\mathrm{d}N_{j}+\sum_{i=1}^{M}\psi_{i}\mathrm{d}q_{i} \tag{22.2}
+\end{equation}
+When the process involves only charged particles, i and j coincide. 
+\begin{equation}
+\mathrm{d}U=T\mathrm{d}S-p\mathrm{d}V+\sum_{i=1}^{M}(\mu_{i}+z_{i}e\psi)\mathrm{d}N_{i} \tag{22.3}
+\end{equation}
+Z is the valence of the ion and e is the unit charge on a proton. The electrochemical potential is then defined as: 
+\begin{equation}
+\mu_{i}'=\mu_{i}+z_{i}e\psi \tag{22.4}
+\end{equation}
+\textbf{The Nernst Equation}\\ 
+Consider mobile ions that is free to distribute between locations $x_{1}$ and $x_{2}$. The mobile ions will be at equilibrium when the electrochemical potentials are equal: $\mu'(x_{1})=\mu'(x_{2})$. Substituting the expression for the chemical potential $\mu (x)=\mu^{\degree}+kT\ln{c(x)}$ into (22.4) gives: 
+\begin{equation}
+\mu '(x)=\mu^{\degree}+kT\ln{c(x)}+ze\psi(x) \tag{22.6}
+\end{equation}
+Substituting (22.6) into (22.5) gives the Nernst equation.
+\begin{equation}
+\ln{\bigg[\frac{c(x_{2})}{c(x_{1})} \bigg]}=\frac{-ze[\psi (x_{2})-\psi (x_{1})]}{kT} \tag{22.7}
+\end{equation}
+\textbf{Redox reactions}\\
+Suppose that a silver electrode is in equilibrium with a solution of silver nitrate. Then the electrochemical potential of the silver ions in the solid must equal the potential of the silver ions in the liquid. 
+\begin{equation}
+\mu_{Ag^{+}}'(solid)=\mu_{Ag^{+}}'(liquid)
+\end{equation}
+The condition for equilibrium can be written as: 
+\begin{equation}
+\mu_{Ag^{+}}^{\degree}(solid)+zF\psi_{solid}=\mu_{Ag^{+}}^{\degree}(liquid)+RT\ln{c}+zF\psi_{liquid} \tag{22.17}
+\end{equation}
+\setcounter{section}{23}
+\section{Intermolecular Interactions}
+\textbf{Molecules repel each other at very short range and attract at longer distances.}\\ 
+The force $f(r)$ between two particles is the derivative of the pair potential. 
+\begin{equation}
+f(r)=-\frac{\mathrm{d}u(r)}{\mathrm{d}r} \tag{24.1}
+\end{equation}
+Intermolecular interactions are commonly modeled as a power law: 
+\begin{equation}
+u(r)=(constant)r^{-p} \tag{24.2} 
+\end{equation}
+Interactions are called short-ranged if $p>3$ and long-ranged if $p\leq 3$. 
+The Coulombic interactions $u(r)\propto \pm\ \frac{1}{r}$ is long-ranged while $u(r)\propto\pm \ \frac{1}{r^{6}}$. 
+\\
+\\
+\textbf{London dispersion forces are due to the polarizabilities of atoms} \\
+The dipole moment that is induced by the field $E$ is often found to be proportional to the applied field. 
+\begin{equation}
+\mu_{ind}=\alpha E \tag{24.9}
+\end{equation}
+\textbf{A charge will polarize a neutral atom and attract it}
+The Lennard-Jones potential: 
+\begin{equation}
+u(r)=\frac{a}{r^{12}}-\frac{b}{r^{6}} 
+\end{equation}
+\textbf{The van der Waals gas model accounts for intermolecular interactions} \\
+The van der Waals equation of state for the pressure: 
+\begin{equation}
+p=\frac{NkT}{V-Nb}-\frac{aN^{2}}{V^{2}} \tag{24.15}
+\end{equation}
+\section{Phase Transitions}
+\textbf{Thermal phase equilibria arise from a balance between energies and entropies } \\
+Consider two liquid phases, one of pure A and one of pure B. We then combine them. The free energy of mixing is given by (15.16).
+\begin{equation}
+\frac{\Delta F_{solution}}{NkT}=x\ln{x}+(1-x)\ln{(1-x)}+\chi_{AB}x(1-x) \tag{.}
+\end{equation}
+We look at the two conditions  
+\begin{equation}
+\bigg(\frac{\partial F}{\partial x} \bigg)=0, \ \ \bigg(\frac{\partial^{2} F}{\partial x^{2}} \bigg)>0 
+\end{equation}
+When the second derivative is positive, the mixed system is locally stable and does not form separate phases. When it is negative, the syste, will locally divide into separate phases, and the will also proceed further to global instability and full phase separation.  \\\\ Consider the book for further details. 
+\setcounter{section}{26}
+\section{Adsorption, Binding \& Catalysis}
+\textbf{Binding and adsorption processes are saturable} \\
+Atoms or molecules that bind to surfaces are called adsorbates or ligands. \\\\
+\textbf{The Langmuir model describes adsorption of fas molecules on a surface.} \\
+At equilibrium, the chemical potential of the adsorbate in the gas phase equals the chemical potential of the adsorbate on the surface.
+\begin{equation}
+\mu_{bound}=\mu_{gas} \tag{27.1}
+\end{equation}
+To model $\mu_{bound}$, a lattice approach is simplest. The density of the adsorbate on the surface is 
+\begin{equation}
+\theta=\frac{N}{A} \tag{27.2}
+\end{equation}
+the fraction of surface sites that are filled with ligand. The translational entropy is then given by
+\begin{equation}
+\frac{S}{Ak}=-\theta \ln{\theta}-(1-\theta)\ln{(1-\theta)} \tag{27.4}
+\end{equation}
+Now we compute the adsorption free energy. If N particles stick to the surface, each with energy $w<0$, then binding contributes an amount $U=Nw$ to the total energy U of the system. The free energy F of the adsorbed gas is 
+\begin{equation}
+\frac{F}{AkT}=\frac{U-TS}{AkT}=\theta \ln{\theta}+(1-\theta)\ln{(1-\theta)}+\bigg(\frac{w}{kT}\bigg)\theta-\theta\ln{q_{bound}} \tag{27.6}
+\end{equation}
+To get the chemical potential of the adsorbate at the surface, take the derivative with respect to N. 
+\begin{gather}
+\frac{\mu_{bound}}{kT}=\bigg(\frac{\partial (F/kT)}{\partial N}\bigg)_{A,T} \tag{.} \\
+=\ln{\bigg(\frac{N}{A-N} \bigg)}+\frac{w}{kT}-\ln{q_{bound}} \tag{.} \\ 
+\ln{\bigg(\frac{\theta}{1-\theta} \bigg)}+\frac{w}{kT}-\ln{q_{bound}} \tag{27.7}
+\end{gather}
+Equate this to (14.5) to get the pressure and the binding constant. 
+\begin{equation}
+p=\bigg(\frac{q'_{gas}kT}{q_{bound}} \bigg)\bigg(\frac{\theta}{1-\theta}e^{-w/kT} \bigg) \tag{27.9}
+\end{equation}
+\begin{equation}
+K=\frac{q_{bound}}{q'_{gas}kT}e^{-w/kT} \tag{27.10}
+\end{equation}
+(27.10) into (27.9) gives $K_{p}=\frac{\theta}{1-\theta}$ which rearranges to the \textit{Langmuir adsorption equation}.
+\begin{equation}
+\theta=\frac{K_{p}}{1+K_{p}} \tag{27.12}
+\end{equation}
+\textbf{The Langmuir model also treats binding and saturation in solution} \\ 
+Put ligand molecules of type X into a solution in equilibrium with some type of particle . Ligands can bind the particles to form a 'bound complex' PX.
+\begin{equation}
+X+P\xrightarrow{K}PX \tag{27.16}
+\end{equation}
+\begin{equation}
+K=\frac{[PX]}{[P][X]} \tag{27.17}
+\end{equation}
+We want to know how $\theta$, the fraction of binding sites on P that are filled by ligand, depends on the solution concentration of the ligand [X].
+\begin{equation}
+\theta=\frac{[PX]}{[P]+[PX]}=\frac{Kx}{1+Kx} \tag{27.18}
+\end{equation}
+\textbf{The Michaelis-Menten model describes saturation in rate processes} \\
+Among the most important reactions in biology is enzymatic reactions. 
+\begin{equation}
+E+S\xrightarrow{K}ES\xrightarrow{k_{2}}E+P \tag{27.23}
+\end{equation}
+The binding equilibrium constant is $K=\frac{[ES]}{[E]x}$ where $x=[S]$ is the substrate concentration. The velocity of the reaction is defined in terms of the rate constant $k_{2}$.
+\begin{equation}
+v=\frac{\mathrm{d}P}{\mathrm{d}t}=k_{2}[ES]=k_{2}K[E]x \tag{27.25}
+\end{equation}
+The Michaelis-Menten equation involves the instance when the enzyme is fully saturated. Then the maximum rate is $v_{max}=k_{2}E_{T}$ where the t denotes the total enzyme concentration. 
+\begin{equation}
+\frac{v}{v_{max}}=\frac{Kx}{1+Kx} \tag{27.28}
+\end{equation} 
+\textbf{Sabatier's principle: Catalysts should bind neither too tightly nor too weakly} \\
+Consider the reaction $A\rightarrow B$. Suppose S is a surface that catalyzes this reaction. \begin{equation}
+A+S\xrightarrow{K}AS\xrightarrow{k_{2}}B+S \tag{.}
+\end{equation}
+Step 1 is the adsorption of A to the surface to reach AS. Step 2 involves the conversion of A to B. The overall rate r of the reaction is 
+\begin{equation}
+\frac{r}{A_{s}}=k_{2}\theta=\frac{k_{2}Kp}{1+Kp} \tag{27.31}
+\end{equation}
+We now use the Arrhenius law to express $k_{2}$ in terms of the activation energy $E_{a}$ for the conversion of A to B and the desorption. 
+\begin{equation}
+k_{2}=c_{1}e^{-E_{a}/kT} \tag{27.32}
+\end{equation}
+Where $c_{1}$ is a constant. $k_{2}=c_{2}e^{a\Delta G_{1}/kT}=c_{2}K^{-a}$.\\ $c_{2}=c_{1}e^{-(a\Delta G+b)/kT}$ is a constant, independent of affintiy. This leads to 
+\begin{equation}
+\frac{r}{A_{s}}=\frac{c_{2}K^{1-a}p}{1+Kp} \tag{27.34}
+\end{equation}
+Turn to the book for details concerning the great variety of constants in these expression. Its a mess.
+\setcounter{section}{31}
+\section{Polymer solutions}
+\textbf{Polymer properties are governed by distribution functions}\\
+Synthetic polymers have \textit{distribution of chain lengths}. Secondly, polymer chains have \textit{distribution of conformations} \\ \\
+\textbf{Polymers have distribution of conformations}\\ 
+Chain molecules have conformational degrees of freedom. At high temperatures a polyethylene chain of N bonds have approximately $3^{N}$ conformations. \\ \\
+\textbf{The Flory-Huggins model describes polymer solution thermodynamics} \\
+Consider a lattice of M sites, each site with z nearest neighbours. Suppose there are $n_{s}$ solvent molecules and $n_{p}$ polymer molecules. Each polymer molecule has N chain segments. If the polymer and solvent completely fill the lattice, then 
+\begin{equation}
+M=Nn_{p}+n_{s} \tag{32.1}
+\end{equation}
+The mole fractions of polymer and solvent are $\frac{n_{p}}{(n_{p}+n_{s})}$ and $\frac{n_{s}}{(n_{p}+n_{s})}$. The volume fraction for the solvent and polymers are 
+\begin{equation}
+\phi_{s}=\frac{n_{s}}{M}, \ \ \ \phi_{p}\frac{Nn_{p}}{M} \tag{32.2}
+\end{equation}
+\textbf{The entropy of mixing} \\
+The total number of conformations of one chain on the lattice is 
+\begin{equation}
+v_{1}=Mz(z-1)^{N-2}\simeq M(z-1)^{N-1} \tag{32.3}
+\end{equation}
+Mr. Flory does something crazy and finds a better estimate of the number of conformations available for one chain: 
+\begin{equation}
+v_{1}\simeq \bigg(\frac{z-1}{M} \bigg)^{N-1}\frac{M!}{(M-N)!} \tag{32.4}
+\end{equation}
+The number of arrangements for placing the first monomer segments for all of the chains is 
+\begin{equation}
+v_{first}=\frac{M!}{(M-n_{p})!} \tag{32.5}
+\end{equation}
+The number of arrangements of all the subsequent segments is 
+\begin{equation}
+v_{subsequent}=\bigg(\frac{z-1}{M} \bigg)^{n_{p}(N-1)}\frac{(M-n_{p})!}{(M-Nn_{p})!} \tag{32.6}
+\end{equation}
+To compute the total number of arrangements $W(n_{p},n_{s})$, multiply (32.5) and (32.6) to get 
+\begin{gather}
+W(n_{p},n_{s})=\frac{v_{first}v_{subsequent}}{n_{p}!} \tag{.} \\ =\bigg(\frac{z-1}{M} \bigg)^{n_{p}(N-1)}\frac{M!}{(M-Nn_{p})!n_{p}!} \tag{32.7}
+\end{gather}
+The entropy change upon mixing:
+\begin{equation}
+\frac{\Delta S_{mix}}{k}=\ln{\frac{W(n_{p},n_{s})}{W(0,n_{s})W(n_{p},0)}} \tag{32.8}
+\end{equation}
+\textbf{The energy of mixing} \\
+The total contact energy is
+\begin{equation}
+U=m_{ss}w_{ss}+m_{pp}w_{pp}+m_{sp}w_{sp} \tag{32.13}
+\end{equation}
+Using Bragg-Williams and etc. we find
+\begin{equation}
+\frac{U}{kT}=\bigg(\frac{zw_{ss}}{2kT} \bigg)n_{s}+\bigg(\frac{zw_{pp}}{2kT} \bigg)Nn_{p}+\chi_{sp}\frac{n_{s}n_{p}N}{M} \tag{32.15}
+\end{equation}
+where 
+\begin{equation}
+\chi_{sp}=\frac{z}{kT}\bigg(w_{sp}-\frac{w_{ss}+w_{pp}}{2} \bigg) \tag{32.16}
+\end{equation}
+\textbf{The free energy and chemical potential} \\
+The free energy is given by 
+\begin{gather}
+\frac{F}{kT}=n_{s}\ln{\phi_{s}}+n_{p}\ln{\phi_{p}}+\bigg(\frac{zw_{ss}}{2kT} \bigg)n_{s} \tag{.} \\+\bigg(\frac{zw_{pp}}{2kT} \bigg)Nn_{p}  +\chi_{sp}\frac{n_{s}n_{p}N}{M} \tag{32.17}
+\end{gather}
+To generalize, suppose a mixture of $n_{a}$ of a polymer A containing $N_{A}$ monomer units and $n_{b}$ molecules of a polymer B having $N_{b}$ monomers per chain. Then (32.17) gives
+\begin{gather}
+\frac{F_{mix}}{kT}=n_{A}\ln{\phi_{A}}+n_{B}\ln{\phi_{B}}+\bigg(\frac{zw_{AA}}{2kT} \bigg)N_{A}n_{A} \tag{.} \\+\bigg(\frac{zw_{BB}}{2kT} \bigg)N_{B}n_{B}  +\chi_{AB}\frac{n_{A}n_{B}N_{A}N_{B}}{M} \tag{32.17}
+\end{gather}
+The chemical potential can then be computed as \begin{equation}
+\frac{\mu_{B}}{kT}=\bigg(\frac{\partial}{\partial n_{b}}\bigg(\frac{F_{mix}}{kT} \bigg) \bigg)_{n,A,T} \tag{32.19}
+\end{equation}
+\end{multicols}
+\end{document}
