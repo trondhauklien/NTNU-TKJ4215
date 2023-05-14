@@ -10,6 +10,34 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 \usepackage{gensymb}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\urlstyle{same}
+
+
+\makeatletter
+    \def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
 
 
 \setlength{\columnsep}{0.8cm}
@@ -17,36 +45,52 @@
 \titleformat*{\section}{\large\bfseries}
 
 \begin{document}
-\title{Formelark - Statistisk termodynamikk}
+\author{}
+\title{%
+Formula sheet\\
+\large TKJ4215 Statistical Thermodynamics in Chemistry and Biology}
 
 \maketitle
 
 
 \begin{multicols}{2}
+\noindent Written by Erik Wegner Hodt 26 May 2019. Revised by Trond Hauklien and Eila Bergene 14 May 2023 with updated equation references to Dill. \LaTeX source document: \url{https://github.com/trondhauklien/NTNU-TKJ4215}
+
 \section{Starters}
+\textbf{Multiplicity}\\
+For a $N$ objects (eg. particles, lattice points) with $t$ categories, of which $n_i$ objects in each category are indistinguishable from one another, but distinguishable from the other categories, the number of permutations $W$ is
+\begin{equation} \tag{1.21}
+W=\frac{N!}{n_1!n_2!\dots n_t!}.
+\end{equation}
+When there are only two categories (eg. gas particles on a lattice) the number of permutations $W(n,N)$ is
+\begin{equation} \tag{1.22}
+W(n,N)=\binom{n}{N}=\frac{N!}{n!(N-n)!}.
+\end{equation}
 \textbf{Stirling's approximation}\\
-For large N, Stirling's approximation becomes quite accurate. 
-\begin{equation}
+For large N (more than about 10), Stirling's approximation becomes quite accurate. 
+\begin{equation} \tag{B.3}
 \ln{N!}\simeq N\ln{N}-N \implies N!\simeq \bigg(\frac{N}{e} \bigg)^{N}
 \end{equation}
 \textbf{Taylor series}\\
 A function f(x) near the point $x=a$ can be expressed in terms of its derivatives. 
-\begin{gather}
+\begin{equation}\tag{A.1}
+\begin{split} 
 f(x)\simeq f(a)+\bigg(\frac{\mathrm{d}f}{\mathrm{d}x}\bigg)_{x=a}(x-a)+\frac{1}{2}\bigg(\frac{\mathrm{d}^{2}f}{\mathrm{d}x^{2}}\bigg)_{x=a}(x-a)^2\\+...+\frac{1}{n!}\bigg(\frac{\mathrm{d}^{n}f}{\mathrm{d}x^{n}}\bigg)_{x=a}(x-a)^{n}
-\end{gather}
+\end{split}
+\end{equation}
 Some useful results are: 
-\begin{equation}
+\begin{equation} \tag{J.4}
 \ln{(a+x)}=\ln{(a)}+\frac{x}{a}-\frac{x^{2}}{2a^{2}}+\frac{x^{3}}{3a^{3}}-...+...
 \end{equation}
-\begin{equation}
+\begin{equation} \tag{J.6}
 (1+x)^{p}=1+px+\frac{p(p-1)}{2!}x^{2}+\frac{p(p-1)(p-2)}{3!}x^{3}+...
 \end{equation}
 The latter equation for $|x|<1$. \\ \\ 
 \textbf{Lagrange multiplier method} \\
 Given a function $f(x,y)$ and a constraint $g(x,y)=c$. Define a new function $g'(x,y)=g(x,y)-c$. Then the extremum points can be found by maximizing/minimizing the following expression.  
-\begin{equation}
+\begin{equation*}
 \mathscr{L}(x,y,\lambda)=f(x,y)-\lambda g'(x,y)
-\end{equation}
+\end{equation*}
 \section{Extremum principles predict equilibria}
 \textbf{Degrees of freedom}\\
 A degree of freedom is a quantity which the system is free to change. If the degree of freedom of the system is its volume, the particles will spread out into the largest possible volume to maximize the multiplicity of the system.  \\\\
@@ -60,14 +104,14 @@ Let $V(x)$ denote the potential energy of the system. Then a state of equilibriu
 \section{Heat, Work \& Energy}
 The first law of thermodynamics  
 \begin{equation}
-\Delta U=q+w  \tag{-} 
+\Delta U=q+w  \tag{p. 49} 
 \end{equation}
 \textbf{Kinetic theory of gases}\\
 Three novel concepts: \\
 1. Matter is composed of molecules that are not located at fixed positions in space, but are free to move through a space that is otherwise empty. \\
 2. Heat is the exchange of energy that takes place owing to the motions and collisions of molecules. \\ 3. Electromagnetic radiation can influence the motions of molecules. \\\\
 Total internal energy of a thermodynamic system. $\epsilon_{i}$ is the energy of any particle at level i, and $N_{i}$ is the number of particles at energy level i. 
-\begin{equation}
+\begin{equation} \tag{3.12}
 U=\sum_{i} N_{i} \epsilon_{i}
 \end{equation}
 When the total internal energy of a system is increased by heating, the energy populations do not change: the populations change. 
@@ -152,6 +196,7 @@ w=-\int_{V_{1}}^{V_{2}} p_{ext}\mathrm{d}V=-NkT_{0}\ln{\frac{p_{1}}{p_{2}}} \tag
 \begin{equation}
 \frac{T_{2}}{T_{1}}=(\frac{V_{1}}{V_{2}})^{\frac{Nk}{C_{V}}} \tag{7.21}
 \end{equation}
+\pagebreak
 \section{Laboratory Conditions \& Free Energies}
 Systems held at constant temperature do not tend toward their states of maximum entropy. They tend toward their states of \textit{minimum free energy}. \\ \\
 \textbf{The Helmholtz free energy (T,V,N)} 
@@ -184,6 +229,11 @@ We now get additional thermodynamic relations.
 \begin{equation}
 S=-\bigg( \frac{\partial G}{\partial T} \bigg)_{p,N}, V=\bigg( \frac{\partial G}{\partial p} \bigg)_{T,N}, \mu_{j}=\bigg( \frac{\partial G}{\partial N_{j}} \bigg)_{p,T, N_{i\neq j}} \tag{8.20}
 \end{equation}
+\textbf{Heat capacity at constant pressure}
+\begin{equation}
+C_p=\bigg( \frac{\delta q}{\mathrm{d} T} \bigg)_{p}=\bigg(\frac{\partial H}{\partial T} \bigg)_{p}=T\bigg(\frac{\partial S}{\partial T} \bigg)_{p}
+\tag{8.25}
+\end{equation}
 \section{Maxwell's Relations \& Mixtures}
 \textbf{How to design a fundamental equation} \\
 1. Introduce the extensive variabel X into the fundamental energy equation. U=U(S,V,N,X). It is always extensive variables that you add, and you add them only to the fundamental energy equation. 
@@ -199,16 +249,21 @@ With this augmented function $\mathrm{d}U$, you can find the fundamental functio
 1. Identify what independent variables are implied by the problem. \\
 2. Find the natural function of these variables. See table (8.1) \\
 3. Express the total differential of the natural function. \\
-4. Based on Euler's reciprocal relation, set equal the two cross-derivatives you want. \\ \\
+4. Based on Euler's reciprocal relation, set equal the two cross-derivatives you want. \\
+\begin{equation}
+\frac{\partial^{2} f}{\partial x\partial y}=\frac{\partial^{2} f}{\partial y\partial x} \tag{4.39}
+\end{equation} \\
 \textbf{Partial molar properties} \\
 Partial molar quantities are defined specifically to be quantities measured at constant T and P, usually implying the isobaric-isothermic ensemble (Gibbs). The partial molar volume is given by 
 \begin{equation}
 v_{j}=\bigg( \frac{\partial V}{\partial n_{j}} \bigg)_{T,p,N_{i\neq j}} \tag{9.29}
 \end{equation}
 Chemical potentials are partial molar free energies.
-\begin{gather}
-\mu_{j}=\bigg( \frac{\partial G}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}}=\bigg( \frac{\partial H}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}} - T\bigg( \frac{\partial S}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}} \tag{-}\\ = h_{j}-Ts_{j}  \tag{9.32}
-\end{gather}
+\begin{equation}\tag{9.32}
+\begin{split}
+\mu_{j} =\bigg( \frac{\partial G}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}}&=\bigg( \frac{\partial H}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}} - T\bigg( \frac{\partial S}{\partial N_{j}} \bigg)_{T,p,N_{i\neq j}} \\ &= h_{j}-Ts_{j}
+\end{split}
+\end{equation}
 $h_{j}$ and $s_{j}$ are partial molar enthalpy and entropy. 
 \section{The Boltzmann Distribution Law}
 The Boltzmann distribution law is given by 
@@ -226,6 +281,7 @@ We now define W(E) to be the density of states; that is, W(E) is the total numbe
 \begin{equation}
 Q=\sum_{\mathscr{L}=1}^{\mathscr{L}_{max}}W(E_{\mathscr{L}})e^{-E_{j}/kT} \tag{10.23}
 \end{equation}
+\pagebreak \\
 \textbf{Partition function for independent and distinguishable particles} \\
 For a system having N independent and distinguishable particles, we have: 
 \begin{equation}
@@ -281,19 +337,19 @@ The energy levels $\epsilon_{n}$ are written as
 \epsilon_{n}=\frac{(nh)^{2}}{8mL^{2}} \tag{11.12}
 \end{equation}
 \textbf{Vibrational contribution to the partition function} \\ 
-The vibrational partition function can be wrtiten as
+Vibrational temperature is defined as: 
 \begin{equation}
-q_{vibration}=\frac{1}{1-e^{-h\nu/kT}} \tag{11.26}
+\theta_{vibration}=\frac{h\nu}{k} \tag{p. 203}
+\end{equation}
+The vibrational partition function can be written as
+\begin{equation}
+q_{vibration}=\frac{1}{1-e^{-h\nu/kT}}=\frac{1}{1-e^{q_{vbr}/T}} \tag{11.26}
 \end{equation}
 or 
 \begin{equation}
 q_{vibration}=\frac{e^{\frac{-\beta h\nu}{2}}}{1-e^{-\beta h\nu}}, \ \ \beta = \frac{1}{kT} \tag{11.26}
 \end{equation}
 where we in the last equation include the vibrational ground state. \\ \\
-Vibrational temperature defined as: 
-\begin{equation}
-\theta_{vibration}=\frac{h\nu}{k} \tag{-}
-\end{equation}
 Vibrational energy levels are given by: 
 \begin{equation}
 \epsilon_{v}=\bigg(+\frac{1}{2}\bigg)h\nu \tag{11.22}
@@ -304,6 +360,10 @@ To apply the harmonic oscillator model to diatomic molecules, we need to general
 \end{equation}
 where $\mu$ is the reduced mass $\mu=\frac{m_{1}m_{2}}{m_{1}+m_{2}}$ \\ \\
 \textbf{Rotational contribution to the partition function}
+Rotational temperature is defined as: 
+\begin{equation}
+\theta_{rotation}=\frac{h^{2}}{8\pi^{2}Ik} \tag{p. 204}
+\end{equation}
 Linear rotation gives: 
 \begin{equation}
 q_{rotation}=\frac{T}{\sigma\theta_{rotation}}=\frac{8\pi^{2}IkT}{\sigma h^{2}} \tag{11.30}
@@ -311,10 +371,6 @@ q_{rotation}=\frac{T}{\sigma\theta_{rotation}}=\frac{8\pi^{2}IkT}{\sigma h^{2}} 
 Non-linear rotation gives: 
 \begin{equation}
 q_{non-lin.rot}=\frac{(\pi I_{a}I_{b}I_{c})^{\frac{1}{2}}}{\sigma}\bigg(\frac{8\pi^{2}kT}{h^{2}}\bigg)^{\frac{3}{2}} \tag{11.31}
-\end{equation}
-Rotational temperature defined as: 
-\begin{equation}
-\theta_{rotation}=\frac{h^{2}}{8\pi^{2}Ik} \tag{-}
 \end{equation}
 The energy levels are given by
 \begin{equation}
@@ -335,11 +391,11 @@ F=-NkT\ln{\bigg(\frac{eq}{N}\bigg)} \tag{11.36}
 \end{equation}
 \textbf{Ideal gas pressure}
 \begin{equation}
-p=-\bigg(\frac{\partial F}{\partial V}\bigg)_{T,N}=\frac{NkT}{V} \tag{-}
+p=-\bigg(\frac{\partial F}{\partial V}\bigg)_{T,N}=\frac{NkT}{V} \tag{p. 207}
 \end{equation}
 \textbf{Ideal gas energy}
 \begin{equation}
-U=NkT^{2}\bigg(\frac{\partial\ln{q}}{\partial T}\bigg) \tag{-}
+U=NkT^{2}\bigg(\frac{\partial\ln{q}}{\partial T}\bigg) \tag{p. 208}
 \end{equation}
 \textbf{Ideal gas entropy}
 \begin{equation}
@@ -491,12 +547,12 @@ This entropy can be expressed in terms of the relative concentrations of A and B
 \textbf{Ideal solutions} \\
 A solution is ideal if its free energy of solution is given by: 
 \begin{equation}
-\Delta F_{solution}=-T\Delta S_{solution} \tag{-}
+\Delta F_{solution}=-T\Delta S_{solution} \tag{p. 271}
 \end{equation}
 \textbf{The energy of solution}\\
 The total interaction energy of the system is: 
 \begin{gather}
-U=\bigg(\frac{zN_{A}-m_{AB}}{2}\bigg)w_{AA}+\bigg(\frac{zN_{B}-m_{AB}}{2}\bigg)w_{BB} +m_{AB}w_{AB}  \tag{15.9} \\ =\bigg(\frac{zw_{AA}}{2}\bigg)N_{A}+\bigg(\frac{zw_{BB}}{2}\bigg)N_{B}+\bigg(w_{AB}-\frac{w_{AA}+w_{BB}}{2}\bigg)m_{AB} \tag{-}
+U=\bigg(\frac{zN_{A}-m_{AB}}{2}\bigg)w_{AA}+\bigg(\frac{zN_{B}-m_{AB}}{2}\bigg)w_{BB} +m_{AB}w_{AB}  \tag{15.9} \\ =\bigg(\frac{zw_{AA}}{2}\bigg)N_{A}+\bigg(\frac{zw_{BB}}{2}\bigg)N_{B}+\bigg(w_{AB}-\frac{w_{AA}+w_{BB}}{2}\bigg)m_{AB} \tag{15.9}
 \end{gather}
 \textbf{Brag-Williams approximation}\\ 
 \begin{equation}
@@ -511,8 +567,8 @@ The exchange parameter is given by:
 \frac{F(N_{A},N_{B})}{kT}=N_{A}\ln{\bigg(\frac{N_{A}}{N} \bigg)}+ N_{B}\ln{\bigg(\frac{N_{B}}{N} \bigg)} +\bigg(\frac{zw_{AA}}{2kT}\bigg)N_{A} \\+\bigg(\frac{zw_{BB}}{2kT}\bigg)N_{B} +\chi_{AB}\frac{N_{A}N_{B}}{N} \tag{15.14}
 \end{gather}
 The free energy of solution in terms of mole fractions is given by: 
-\begin{equation}
-\frac{\Delta F_{solution}}{NkT}=x\ln{x}+(1-x)\ln{(1-x)}+\chi_{AB}x(1-x) \tag{15.16}
+\begin{equation}\tag{15.16}
+\frac{\Delta F_{solution}}{NkT}=x\ln{x}+(1-x)\ln{(1-x)}+\chi_{AB}x(1-x)\label{eq:15.16}
 \end{equation}
 \textbf{The chemical potentials}\\
 The chemical potential for A in the lattice model of a two-component mixture is found by $\mu_{A}=(\partial F/\partial N_{A})_{T,N_{B}}$
@@ -621,6 +677,7 @@ We can express $K^{\ddagger}$ in terms of molecular partition functions.
 \begin{equation}
 K^{\ddagger}=\bigg(\frac{q_{(AB)^{\ddagger}}}{q_{A}q_{B}}\bigg) \tag{19.17}
 \end{equation} 
+\pagebreak \\
 \textbf{The thermodynamics of the activated state}\\
 We are treating $\overline{K^{\ddagger}}$ as an equilibrium constant for the stable degrees of freedom. The overbar indicates that the unstable reaction coordinate degree of freedom $\zeta$ has been factored out. We can express this constant in terms of thermodynamic quantities which are called the activation free energy $\Delta G^{\ddagger}$, activation enthalpy $\Delta H^{\ddagger}$ and activation entropy $\Delta S^{\ddagger}$. 
 \begin{equation}
@@ -730,15 +787,15 @@ p=\frac{NkT}{V-Nb}-\frac{aN^{2}}{V^{2}} \tag{24.15}
 \end{equation}
 \section{Phase Transitions}
 \textbf{Thermal phase equilibria arise from a balance between energies and entropies } \\
-Consider two liquid phases, one of pure A and one of pure B. We then combine them. The free energy of mixing is given by (15.16).
-\begin{equation}
-\frac{\Delta F_{solution}}{NkT}=x\ln{x}+(1-x)\ln{(1-x)}+\chi_{AB}x(1-x) \tag{.}
-\end{equation}
+Consider two liquid phases, one of pure A and one of pure B. We then combine them. The free energy of mixing is given by eq. (\ref{eq:15.16}).
+\begin{equation*}
+\frac{\Delta F_{solution}}{NkT}=x\ln{x}+(1-x)\ln{(1-x)}+\chi_{AB}x(1-x)
+\end{equation*}
 We look at the two conditions  
-\begin{equation}
+\begin{equation} \tag{25.13}
 \bigg(\frac{\partial F}{\partial x} \bigg)=0, \ \ \bigg(\frac{\partial^{2} F}{\partial x^{2}} \bigg)>0 
 \end{equation}
-When the second derivative is positive, the mixed system is locally stable and does not form separate phases. When it is negative, the syste, will locally divide into separate phases, and the will also proceed further to global instability and full phase separation.  \\\\ Consider the book for further details. 
+When the second derivative is positive, the mixed system is locally stable and does not form separate phases. When it is negative, the syste, will locally divide into separate phases, and the will also proceed further to global instability and full phase separation.
 \setcounter{section}{26}
 \section{Adsorption, Binding \& Catalysis}
 \textbf{Binding and adsorption processes are saturable} \\
@@ -761,11 +818,13 @@ Now we compute the adsorption free energy. If N particles stick to the surface, 
 \frac{F}{AkT}=\frac{U-TS}{AkT}=\theta \ln{\theta}+(1-\theta)\ln{(1-\theta)}+\bigg(\frac{w}{kT}\bigg)\theta-\theta\ln{q_{bound}} \tag{27.6}
 \end{equation}
 To get the chemical potential of the adsorbate at the surface, take the derivative with respect to N. 
-\begin{gather}
-\frac{\mu_{bound}}{kT}=\bigg(\frac{\partial (F/kT)}{\partial N}\bigg)_{A,T} \tag{.} \\
-=\ln{\bigg(\frac{N}{A-N} \bigg)}+\frac{w}{kT}-\ln{q_{bound}} \tag{.} \\ 
-\ln{\bigg(\frac{\theta}{1-\theta} \bigg)}+\frac{w}{kT}-\ln{q_{bound}} \tag{27.7}
-\end{gather}
+\begin{equation}\tag{27.7}
+\begin{split}
+\frac{\mu_{bound}}{kT}=\bigg(\frac{\partial (F/kT)}{\partial N}\bigg)_{A,T}  \\
+=\ln{\bigg(\frac{N}{A-N} \bigg)}+\frac{w}{kT}-\ln{q_{bound}} \\ 
+\ln{\bigg(\frac{\theta}{1-\theta} \bigg)}+\frac{w}{kT}-\ln{q_{bound}} 
+\end{split}
+\end{equation}
 Equate this to (14.5) to get the pressure and the binding constant. 
 \begin{equation}
 p=\bigg(\frac{q'_{gas}kT}{q_{bound}} \bigg)\bigg(\frac{\theta}{1-\theta}e^{-w/kT} \bigg) \tag{27.9}
@@ -804,7 +863,7 @@ The Michaelis-Menten equation involves the instance when the enzyme is fully sat
 \end{equation} 
 \textbf{Sabatier's principle: Catalysts should bind neither too tightly nor too weakly} \\
 Consider the reaction $A\rightarrow B$. Suppose S is a surface that catalyzes this reaction. \begin{equation}
-A+S\xrightarrow{K}AS\xrightarrow{k_{2}}B+S \tag{.}
+A+S\xrightarrow{K}AS\xrightarrow{k_{2}}B+S \tag{p. 552}
 \end{equation}
 Step 1 is the adsorption of A to the surface to reach AS. Step 2 involves the conversion of A to B. The overall rate r of the reaction is 
 \begin{equation}
@@ -852,9 +911,11 @@ The number of arrangements of all the subsequent segments is
 v_{subsequent}=\bigg(\frac{z-1}{M} \bigg)^{n_{p}(N-1)}\frac{(M-n_{p})!}{(M-Nn_{p})!} \tag{32.6}
 \end{equation}
 To compute the total number of arrangements $W(n_{p},n_{s})$, multiply (32.5) and (32.6) to get 
-\begin{gather}
-W(n_{p},n_{s})=\frac{v_{first}v_{subsequent}}{n_{p}!} \tag{.} \\ =\bigg(\frac{z-1}{M} \bigg)^{n_{p}(N-1)}\frac{M!}{(M-Nn_{p})!n_{p}!} \tag{32.7}
-\end{gather}
+\begin{equation}\tag{32.7}
+\begin{split}
+W(n_{p},n_{s})=\frac{v_{first}v_{subsequent}}{n_{p}!} \\ =\bigg(\frac{z-1}{M} \bigg)^{n_{p}(N-1)}\frac{M!}{(M-Nn_{p})!n_{p}!} 
+\end{split}
+\end{equation}
 The entropy change upon mixing:
 \begin{equation}
 \frac{\Delta S_{mix}}{k}=\ln{\frac{W(n_{p},n_{s})}{W(0,n_{s})W(n_{p},0)}} \tag{32.8}
@@ -874,13 +935,17 @@ where
 \end{equation}
 \textbf{The free energy and chemical potential} \\
 The free energy is given by 
-\begin{gather}
-\frac{F}{kT}=n_{s}\ln{\phi_{s}}+n_{p}\ln{\phi_{p}}+\bigg(\frac{zw_{ss}}{2kT} \bigg)n_{s} \tag{.} \\+\bigg(\frac{zw_{pp}}{2kT} \bigg)Nn_{p}  +\chi_{sp}\frac{n_{s}n_{p}N}{M} \tag{32.17}
-\end{gather}
+\begin{equation}\tag{32.17}
+\begin{split}
+\frac{F}{kT}=n_{s}\ln{\phi_{s}}+n_{p}\ln{\phi_{p}}+\bigg(\frac{zw_{ss}}{2kT} \bigg)n_{s} \\+\bigg(\frac{zw_{pp}}{2kT} \bigg)Nn_{p}  +\chi_{sp}\frac{n_{s}n_{p}N}{M} 
+\end{split}
+\end{equation}
 To generalize, suppose a mixture of $n_{a}$ of a polymer A containing $N_{A}$ monomer units and $n_{b}$ molecules of a polymer B having $N_{b}$ monomers per chain. Then (32.17) gives
-\begin{gather}
-\frac{F_{mix}}{kT}=n_{A}\ln{\phi_{A}}+n_{B}\ln{\phi_{B}}+\bigg(\frac{zw_{AA}}{2kT} \bigg)N_{A}n_{A} \tag{.} \\+\bigg(\frac{zw_{BB}}{2kT} \bigg)N_{B}n_{B}  +\chi_{AB}\frac{n_{A}n_{B}N_{A}N_{B}}{M} \tag{32.17}
-\end{gather}
+\begin{equation}\tag{32.18}
+\begin{split}
+\frac{F_{mix}}{kT}=n_{A}\ln{\phi_{A}}+n_{B}\ln{\phi_{B}}+\bigg(\frac{zw_{AA}}{2kT} \bigg)N_{A}n_{A} \\+\bigg(\frac{zw_{BB}}{2kT} \bigg)N_{B}n_{B}  +\chi_{AB}\frac{n_{A}n_{B}N_{A}N_{B}}{M} 
+\end{split}
+\end{equation}
 The chemical potential can then be computed as \begin{equation}
 \frac{\mu_{B}}{kT}=\bigg(\frac{\partial}{\partial n_{b}}\bigg(\frac{F_{mix}}{kT} \bigg) \bigg)_{n,A,T} \tag{32.19}
 \end{equation}
